@@ -17,6 +17,7 @@ public class Chat extends ListActivity {
 
     private Firebase firebase;
     private String username;
+    private String groupName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +26,8 @@ public class Chat extends ListActivity {
         firebase = new Firebase("https://vivid-inferno-9487.firebaseio.com/");
         final Bundle extras = getIntent().getExtras();
         username = extras.getString("username");
+        groupName = extras.getString("name");
+
         setListeners();
     }
 
@@ -33,7 +36,7 @@ public class Chat extends ListActivity {
         // Setup our view and list adapter. Ensure it scrolls to the bottom as data changes
         final ListView listView = getListView();
         // Tell our list adapter that we only want 50 messages at a time
-        final PostListAdapter mChatListAdapter = new PostListAdapter(firebase.child("groups").child("group_ex1").child("posts").limit(50), this, R.layout.chat_message, username);
+        final PostListAdapter mChatListAdapter = new PostListAdapter(firebase.child("groups").child(groupName).child("posts").limit(50), this, R.layout.chat_message, username);
         listView.setAdapter(mChatListAdapter);
         mChatListAdapter.registerDataSetObserver(new DataSetObserver() {
             @Override
@@ -70,7 +73,7 @@ public class Chat extends ListActivity {
             // Create our 'model', a Chat object
             Post post = new Post(input, username);
             // Create a new, auto-generated child of that chat location, and save our chat data there
-            firebase.child("groups").child("group_ex1").child("posts").push().setValue(post);
+            firebase.child("groups").child(groupName).child("posts").push().setValue(post);
             inputText.setText("");
         }
     }

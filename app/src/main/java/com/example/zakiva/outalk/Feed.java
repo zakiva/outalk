@@ -24,8 +24,17 @@ public class Feed extends AppCompatActivity {
     }
 
     public void chatButtonClicked(View view) {
+        // Start quick chat of 'group_ex1' (easy to debug chat screen)
         Intent chat = new Intent(Feed.this, Chat.class);
         chat.putExtra("username", ((EditText) findViewById(R.id.editText)).getText().toString());
+        chat.putExtra("name", "group_ex1");
         startActivity(chat);
+    }
+
+    public void createGroupButtonClicked(View view){
+        // Creating new groups
+        Intent groups = new Intent(Feed.this, Groups.class);
+        groups.putExtra("username", ((EditText) findViewById(R.id.editText)).getText().toString());
+        startActivity(groups);
     }
 }
