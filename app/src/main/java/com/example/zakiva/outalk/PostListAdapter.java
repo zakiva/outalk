@@ -43,15 +43,20 @@ public class PostListAdapter extends FirebaseListAdapter<Post> {
         );
         // If the message was sent by this user, color it differently
         if (author != null && author.equals(mUsername)) {
-          //  authorText.setTextColor(Color.RED);
             authorText.setVisibility(View.GONE);
             relativeLayout.setBackgroundColor(Color.parseColor("#ffffff"));
             params.setMargins(40, 3, 0, 3);
             params.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
             relativeLayout.setLayoutParams(params);
-         //   linearLayout.setGravity(Gravity.RIGHT);
+            //  authorText.setTextColor(Color.RED);
+            //   linearLayout.setGravity(Gravity.RIGHT); // no
         } else {
-            authorText.setTextColor(Color.BLUE);
+            authorText.setVisibility(View.VISIBLE);
+            relativeLayout.setBackgroundColor(Color.parseColor("#9a48f84b"));
+            params.setMargins(0, 3, 40, 3);
+            params.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
+            relativeLayout.setLayoutParams(params);
+           // authorText.setTextColor(Color.BLUE);
         }
         ((TextView) view.findViewById(R.id.message)).setText(" " + post.getMessage() + "   ");
     }
