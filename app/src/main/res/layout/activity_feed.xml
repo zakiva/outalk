@@ -22,7 +22,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="creat group"
+        android:text="create group"
         android:textAllCaps="false"
         android:layout_below="@+id/chatButton"
         android:layout_marginTop="20dp"

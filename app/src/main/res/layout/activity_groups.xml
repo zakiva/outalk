@@ -15,9 +15,9 @@
         android:text="create group"
         android:textAllCaps="false"
         android:layout_below="@+id/groupName"
+        android:onClick="buttonCreateGroupClicked"
         android:layout_marginTop="20dp"
         android:id="@+id/buttonCreateGroup"
-        android:onClick="buttonCreateGroupClicked"
         android:layout_centerHorizontal="true"
         />
 
@@ -40,5 +40,24 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="15dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Active groups:"
+        android:id="@+id/groupsHeadline2"
+        android:layout_below="@+id/buttonCreateGroup"
+        android:layout_marginTop="15dp" />
+
+    <ListView
+        android:id="@android:id/list"
+        android:layout_width="fill_parent"
+        android:divider="@null"
+        android:dividerHeight="0dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/groupsHeadline2"
+        android:layout_marginTop="15dp"
+        android:transcriptMode="alwaysScroll" />
 
 </RelativeLayout>
