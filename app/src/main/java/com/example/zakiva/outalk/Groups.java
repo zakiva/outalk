@@ -12,6 +12,9 @@ import android.widget.ListView;
 
 import com.firebase.client.Firebase;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Groups extends ListActivity {
 
     private Firebase firebase;
@@ -54,12 +57,13 @@ public class Groups extends ListActivity {
         chat.putExtra("username", username);
         chat.putExtra("name", groupName);
         // Create new group in database
-        GroupInfo groupInfo = new GroupInfo(groupName, "1");
+        List users = new ArrayList();
+        users.add(username);
+        GroupInfo groupInfo = new GroupInfo(groupName, 1, users);
         Post post = new Post("Welcome to the group!", "Groupy");
         firebase.child("groups").child(groupName).child("info").push().setValue(groupInfo);
         firebase.child("groups").child("list of groups").push().setValue(groupInfo);
         firebase.child("groups").child(groupName).child("posts").push().setValue(post);
-
         startActivity(chat);
     }
 
