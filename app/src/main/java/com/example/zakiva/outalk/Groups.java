@@ -1,7 +1,9 @@
 package com.example.zakiva.outalk;
 
 import android.app.ListActivity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.DataSetObserver;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -28,6 +30,7 @@ public class Groups extends ListActivity {
         firebase = new Firebase("https://vivid-inferno-9487.firebaseio.com/");
         final Bundle extras = getIntent().getExtras();
         username = extras.getString("username");
+        //Log.d("name:", getFromLocalDatabase("username"));
         setListeners();
 
     }
@@ -67,4 +70,9 @@ public class Groups extends ListActivity {
         startActivity(chat);
     }
 
+    public String getFromLocalDatabase(String key){
+        SharedPreferences sharedPref = getSharedPreferences("FILE1", 0);
+        //int defaultValue = getResources().getInteger(R.string.saved_high_score_default);
+        return sharedPref.getString(key, "NULL");
+    }
 }

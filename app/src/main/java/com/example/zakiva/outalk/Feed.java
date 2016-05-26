@@ -1,8 +1,11 @@
 package com.example.zakiva.outalk;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -31,10 +34,15 @@ public class Feed extends AppCompatActivity {
         startActivity(chat);
     }
 
-    public void createGroupButtonClicked(View view){
+    public void createGroupButtonClicked(View view) {
         // Creating new groups
         Intent groups = new Intent(Feed.this, Groups.class);
         groups.putExtra("username", ((EditText) findViewById(R.id.editText)).getText().toString());
+        //storeInLocalDatabae("username", ((EditText) findViewById(R.id.editText)).getText().toString());
         startActivity(groups);
     }
+
+
+
+
 }
